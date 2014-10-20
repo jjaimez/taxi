@@ -1,0 +1,58 @@
+<!Doctype HTML>
+<html lang="es">
+	<head>
+		<title>R&iacute;o Cuarto Taxi</title>
+		<link rel="shortcut icon" href="imagenes/icon.ico" type="image/x-icon"/> 
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+		<meta name="description" content="R&iacute;o Cuarto Taxi se trata de una aplicaci&oacute;n sencilla y f&aacute;cil de para solicitar taxis o remises en la ciudad de R&iacute;o Cuarto, C&oacute;rdoba, Argentina.">
+		<meta name="keywords" contenct="HTML5, CSS3, Javascript, PHP">
+		<link rel="stylesheet" href="css/home.css">	
+		<script type="text/javascript"
+		src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCWcDSkf5DDRXiMp-jD-BcFdFEDRHycSeY&sensor=true&region=AR&language=es"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/home.js"> </script>
+	</head>
+	<body onload="initialize()">		
+		<div id="agrupar">
+		<nav id="menu">
+			<ul>
+				<li><figure><img src="imagenes/logo64.png"></figure></li>
+				<li>Inicio</li>
+				<li><a href="empresas.html">Empresas</a></li>
+				<li><a href="acercaDe.html">Acerca de</a></li>
+				<li><a href="contacto.html">Contacto</a></li>
+			</ul>
+		</nav>
+		<section id="columna">
+			<form action="pedido.php" id="formulario" method="post">
+        		<p>Direcci&oacute;n de origen</p>
+        		<input type="text" id="origen" /> <br><br>
+        		<p>Direcci&oacute;n de destino (Opcional)</p>
+        		<input type="text" id="destino"/><br><br>
+        		<input type="button" value="Buscar Direccion" onclick="codeAddress()" id="botonBuscar"><br><br>
+        		<p>Empresa: 
+        		   		<select name="empresa" id="empresa">
+        		   		<option selected="selected" value="azar">Al azar</option>
+						<option value="empresa1">Empresa 1</option>
+						<option value="empresa2">Empresa 2</option>
+						<option value="empresa3">Empresa 3</option>
+						</select >
+				</p> <br>
+        		<p>Numero de pasajeros (Opcional)
+        		<input type="text" size="1" id="pasajeros"/></p><br>
+        		<p>Preferencias (Opcional)</p><br>
+        		<p>Fumador&nbsp; &nbsp;<input type="checkbox" name="fumador" value="fumador"></p><br>
+				<p>Conversador&nbsp; &nbsp;<input type="checkbox" name="conversador" value="conversador"></p><br>
+        		<input type="button" value="Pedir" onclick="validarDatos()" id="botonBuscar"><br><br>
+        	</form>
+        	<p>
+        		<a href="https://www.facebook.com/TecProSoftware"><img src="imagenes/facebook.png"></a> &nbsp; &nbsp;       
+				<a href="https://play.google.com/store/apps/details?id=org.tecpro.colectivos&hl=es_419"><img src="imagenes/googlePlay.png"></a>
+			</p>			
+			<br>	
+		</section>	
+		</div>
+		<div id="map_canvas" name="map_canvas"></div>
+	</body>
+</html>
