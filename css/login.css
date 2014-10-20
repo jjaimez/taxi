@@ -4,27 +4,7 @@
 
 }
 html { height: 100%;max-width:100% }
-body { height: 100%; margin: 0; padding: 0 ;max-width:100%; background: #000000}
-
-header, section, footer, aside, nav, article, figure, hgroup{
-	display: block;
-}
-
-body{
-	text-align: center;
-}
-
-a:link {text-decoration:none;color:#000000;} 
-
-
-a:visited {text-decoration:none;color:#000000;} 
-
-
-a:active {text-decoration:none;color:#058907;} 
-
-
-a:hover {text-decoration:underline;} 
-
+body { height: 100%; margin: 0; padding: 0 ;max-width:100%; background: #000000; text-align: center; max-height: 100%;}
 
 #agrupar{
 	width: 95%; /*Ancho del contenedor*/
@@ -32,28 +12,6 @@ a:hover {text-decoration:underline;}
 	text-align: left; 
 }  
 	
-#menu{
-	background: #FFE000;
-	padding: 0.5% 2.5%;
-	width: 100%;
-	border: solid;
-	border-color: #000000;
-}
-
-#menu li:first-child{
-	width: 12%;
-	text-align: center;
-}
-
-
-#menu li{	
-	display: inline-block;
-	list-style: none;
-	padding:  0% 3%;
-	font: bold 90% verdana, sans-serif;	
-	text-shadow: rgb(150,150,150) 0.3% 0.3% 0.5%;
-}
-
 #columna{
 	position: absolute;
   	top: 30%;
@@ -81,3 +39,10 @@ img { max-width: 100%;height:auto;}
   max-width: 80%;
   text-align: center;
  } 
+
+ .error{ 
+    color: red; 
+    font-weight: bold; 
+    margin: 1%; 
+    text-align: center; 
+} 

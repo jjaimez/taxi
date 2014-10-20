@@ -4,7 +4,7 @@
 
 }
 html { height: 100%;max-width:100% }
-body { height: 100%; margin: 0; padding: 0 ;max-width:100%; background: #000000}
+body { height: 100%; margin: 0; padding: 0 ;max-width:100%; background: #000000; max-height: 100%;}
 
 header, section, footer, aside, nav, article, figure, hgroup{
 	display: block;
@@ -60,6 +60,7 @@ a:hover {text-decoration:underline;}
 }
 
 #columna{
+	max-height: 80%;
 	max-width: 15%;
 	width: 15%;
 	margin: 2% 0%;
@@ -86,14 +87,14 @@ a:hover {text-decoration:underline;}
 }
 
 
-#origen,#destino { 
+#origen,#destino,#empresa,#botonBuscar { 
   border-radius: 0.5%;
   box-shadow: none;
   border-style: none;
   height: auto; 
   width: 80%;
   max-width: 80%;
-  text-align: center;
+  text-align: center;	 
  } 
 
 #botonBuscar {
