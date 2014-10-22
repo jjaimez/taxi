@@ -1,0 +1,35 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+html { height: 100%;width:100%;background: #000000; color: #E87C0C }
+
+div{
+	display: inline-block;
+	border: solid;
+	border-color: #ffffff;}
+
+#pendiente{
+	width: 24%;
+	height: 100%;
+}
+
+#camino{	
+	width: 24%;
+	height: 100%;}
+
+#viaje{
+	width: 24%;
+	height: 100%;
+}
+
+#finalizado{
+	width: 24%;
+	height: 100%;
+}
+
+li{
+	border: solid;
+	border-color: #E87C0C;
+}
+
