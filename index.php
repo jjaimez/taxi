@@ -2,51 +2,57 @@
 <html lang="es">
 	<head>
 		<?php
-			session_start();
+			//session_start();
 			$db_hostname = 'localhost';
 			$db_database = 'taxi';
 			$db_username = 'root';
-			$db_password= '';
-			
-			$con = mysql_connect($db_hostname,$db_username,$db_password); 
-			mysql_select_db($db_database,$con); 
+			$db_password= 'root';
 
-			if(isset($_POST['origen'])) {
-				$lat_origen = "<script> document.write(lat_origen) </script>";
-				$lng_origen = "<script> document.write(lng_origen) </script>";
-				$lat_destino = "<script> document.write(lat_destino) </script>";
-				$lng_destino = "<script> document.write(lng_destino) </script>";
+			$con = mysql_connect($db_hostname,$db_username,$db_password); 
+			mysql_select_db($db_database,$con);
+			if(isset($_POST['origen'])) {				
 				$origen = $_POST['origen'];
 				$empresa = $_POST['empresa'];
+				$lat_origen = $_POST['lat_origen'];
+				$lng_origen = $_POST['lng_origen'];
 				$nropasajeros = $_POST['nropasajeros'];
 				$estado = "pendiente";
-				$queryValores = array($lat_origen,$lng_origen,$origen,$nropasajeros,$estado,$empresa);
-				$query = "INSERT INTO pedido (lat_origen,`lng_origen`,direccion_origen,pasajeros,estado,empresa"
+				$queryValores = array();
+				$query = "INSERT INTO pedido (lat_origen,lng_origen,direccion_origen,pasajeros,estado,empresa,fumador,conversador";
 				if(isset($_POST['destino'])){
 					$destino = $_POST['destino'];
-					$indice = count($queryValores);
-					$queryValores[$indice] = $lat_destino;
-					$queryValores[$indice+1] = $lng_destino;
-					$queryValores[$indice+2] = $destino;
-					$query += ",lat_destino,lng_destino,direccion_destino";
+					if ($destino != ""){
+					$lat_destino = $_POST['lat_destino'];
+					$lng_destino = $_POST['lng_destino'];
+					$queryValores[0] = $lat_destino;
+					$queryValores[1] = $lng_destino;
+					$queryValores[2] = $destino;
+					$query = $query . ",lat_destino,lng_destino,direccion_destino";
+					}
 				}
 				if(isset($_POST['fumador'])){
-					$fumador = $_POST['fumador'];
-					$indice = count($queryValores);
-					$queryValores[$indice] = $fumador;
-					$query += ",fumador";
-				} 
-				if(isset($_POST['conversador'])){
-					$conversador = $_POST['conversador'];
-					$indice = count($queryValores);
-					$queryValores[$indice] = $conversador;
-					$query += ",conversador";
-				} 	
-				$query += ") VALUES ( '$queryValores[0]','$queryValores[1]','$queryValores[2]','$queryValores[3]','$queryValores[4]','$queryValores[5]'";
-				for ($i = 6; $i < $count; $i++) {
-					$query += "'$queryValores[$i]'";
+					$fumador = 1;
+				} else { 
+					$fumador = 0;
 				}
-				$query +=");"
+				if(isset($_POST['conversador'])){
+					$conversador = 1;
+				} else {
+					$conversador = 0;	
+				}
+				$query = $query . ") VALUES ( '$lat_origen','$lng_origen','$origen','$nropasajeros','$estado','$empresa','$fumador','$conversador'";
+				for ($i = 0; $i < $count = count($queryValores); $i++) {
+					$aux = $queryValores[$i];
+					$query = $query . ",'$aux'";
+				}
+				$query = $query . ");";
+				echo $query;
+				$rec = mysql_query($query);
+				if ($rec){
+					echo "TODO PIOLA";
+				} ELSE {
+					echo mysql_error();
+				}
 			 }
 		?>
 		<title>R&iacute;o Cuarto Taxi</title>
@@ -57,7 +63,7 @@
 		<meta name="keywords" contenct="HTML5, CSS3, Javascript, PHP">
 		<link rel="stylesheet" href="css/home.css">	
 		<script type="text/javascript"
-		src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCWcDSkf5DDRXiMp-jD-BcFdFEDRHycSeY&sensor=true&region=AR&language=es"></script>
+		src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCWcDSkf5DDRXiMp-jD-BcFdFEDRHycSeY&sensor=false&region=AR&language=es"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
     <script type="text/javascript" src="js/home.js"> </script>
 	</head>
@@ -92,6 +98,10 @@
         		<p>Preferencias (Opcional)</p><br>
         		<p>Fumador&nbsp; &nbsp;<input type="checkbox" name="fumador" value="fumador"></p><br>
 				<p>Conversador&nbsp; &nbsp;<input type="checkbox" name="conversador" value="conversador"></p><br>
+				<input type="hidden" id="lat_origen" name="lat_origen" value="">
+				<input type="hidden" id="lng_origen" name="lng_origen" value="">
+				<input type="hidden" id="lat_destino" name="lat_destino" value="">
+				<input type="hidden" id="lng_destino" name="lng_destino" value="">
         		<input type="button" value="Pedir" onclick="validarDatos()" id="botonBuscar"><br><br>
         	</form>
         	<p>

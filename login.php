@@ -9,7 +9,7 @@
 		<meta name="keywords" contenct="HTML5, CSS3, Javascript, PHP">
 		<link rel="stylesheet" href="css/login.css">	
 		<?php 
-			//session_start(); 
+			session_start();			
 			$db_hostname = 'localhost';
 			$db_database = 'taxi';
 			$db_username = 'root';
@@ -18,11 +18,14 @@
 			$con = mysql_connect($db_hostname,$db_username,$db_password); 
 			mysql_select_db($db_database,$con); 
 
+			//$con = new mysqli($db_hostname, $db_username, $db_password, $db_database);
+
 			function verificar_login($usuario,$contrasenha,&$result) { 
 			    $sql = "SELECT * FROM usuarios WHERE usuario = '$usuario' and password = '$contrasenha'"; 
-			    $rec = mysql_query($sql); 
+			   $rec = mysql_query($sql); 
+			   // $rec = $con->query($sql); 
 			    $count = 0; 
-			     while($row = mysql_fetch_object($rec)) 
+			     while($row = mysql_fetch_object($rec)) // $row = $rec->fetch_object()
 			    { 
 			        $count++; 
 			        $result = $row; 
@@ -53,6 +56,8 @@
 			            echo '<div class="error">Su usuario es incorrecto, intente nuevamente.</div>'; 
 			        } 
 			    }
+			} else {
+				header("location:ingreso.html"); 
 			}
 
 	?> 	
