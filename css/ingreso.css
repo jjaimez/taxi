@@ -6,21 +6,27 @@ html { height: 100%;width:100%;background: #000000; color: #E87C0C }
 
 div{
 	display: inline-block;
-	border: solid;
-	border-color: #ffffff;}
+}
 
 #pendiente{
 	width: 24%;
 	height: 100%;
+	border-right: solid;
+	border-right-color: #ffffff;
 }
 
 #camino{	
 	width: 24%;
-	height: 100%;}
+	height: 100%;
+	border-right: solid;
+	border-right-color: #ffffff;
+	}
 
 #viaje{
 	width: 24%;
 	height: 100%;
+	border-right: solid;
+	border-right-color: #ffffff;
 }
 
 #finalizado{
@@ -29,7 +35,7 @@ div{
 }
 
 li{
-	border: solid;
-	border-color: #E87C0C;
+	border-bottom: solid;
+	border-bottom-color: #E87C0C;
 }
 
