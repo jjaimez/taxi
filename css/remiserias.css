@@ -2,32 +2,59 @@
 	margin: 0%;
 	padding: 0%;
 	display: block;
+	background: black;
 
 }
 
+
 section{
-	border: solid;
-	border-color: black;
+	border: none;
+}
+p{
+	padding-top: 1%
+}
+
+#titulo{
+	text-align: center;
+	padding-left: 35%;
+}
+
+#nombreEmpresa{
+	font-size: 120%;
 }
 
 #datos{
+	padding-top: 5%;
 	float: left;
 	text-align: left;
 	color: #FFE000;
-	width: 25%;
 }
 
 #puntajes{
-	float: right;
-	text-align: left;
-	color: #FFE000;
-	width: 25%;
-}
-
-#opinones{
+	padding-top: 5%;
+	padding-left: 25%;
+	width: 50%;
 	float: left;
 	text-align: left;
 	color: #FFE000;
 }
+
+#opinones{	
+	padding-top: 3%;
+	float: left;
+	text-align: left;
+	color: #FFE000;
+}
+
+#btnOpinar{
+	text-decoration: none;    
+	width: 25%;
+	background: yellow;
+	color: black;
+	margin-top: 7%;
+	box-shadow: none;
+	border: none;
+}
+
 
 img { max-width: 100%};
