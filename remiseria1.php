@@ -2,10 +2,9 @@
 <html lang="es">
 	<head>
 		<link rel="stylesheet" type="text/css" href="css/remiserias.css">
-		<script type="text/javascript" language="javascript" src="js/lytebox.js"></script>
-		<link rel="stylesheet" href="css/lytebox.css" type="text/css" media="screen" />
+		 <script type="text/javascript" src="js/formOpinar.js"> </script>
 	</head>
-	<body>
+	<body onload="inicializar()">
 		<div>	
 			<?php 
 					session_start();
@@ -64,7 +63,7 @@
 			<p id="nombreEmpresa">Remiseria 1</p>
 			<p>Telefono: 4545454</p>
 			<p>Direccion: Ejemplo 2104 (Banda Norte)</p>
-			<p><a href="formOpinar.php?empresa=empresaejemplo" class="lytebox"><input type="button" id="btnOpinar" value="Opinar"></a></p>	
+			<p><input type="button" id="btnOpinar" onclick="opinar()" value="Opinar"></p>	
 			</section>
 			<section id="puntajes">
 			<p>Preferencias: <?php echo ($preferencias/$filas);?></p>	
@@ -72,7 +71,20 @@
 			<p>Autos: <?php echo ($autos/$filas);?></p>	
 			<p>Precio: <?php echo ($precio/$filas);?></p>	
 			<p>Respeto de las leyes de transito: <?php echo ($leyes/$filas);?></p>			
-			</section>			
+			</section>
+			<section class="formSection">
+			<form action="" id="formularioOpinion" method="post">
+				<p>Nombre: <input type="text" size="1" id="nombreOpinion" name="nombreOpinion"/></p>				
+        		<p>*Preferencias:<input type="text" size="1" id="preferOpinion" name="preferOpinion"/></p>
+        		<p>*Puntualidad:<input type="text" size="1" id="puntOpinion" name="puntOpinion"/></p>
+        		<p>*Autos:<input type="text" size="1" id="AutosOpinion" name="AutosOpinion"/></p>
+        		<p>*Precio:<input type="text" size="1" id="PrecioOpinion" name="PrecioOpinion"/></p>
+        		<p>*Respeto de las leyes de transito:<input type="text" size="1" id="leyOpinion" name="leyOpinion"/></p>
+        		<p>Opinion: <textarea id="opinionOpinion" name="opinionOpinion"> </textarea></p><br>
+        		<input type="button" value="Enviar" size="300" onclick="validarDatos()" id="botonBuscar">
+        		<p>* Por favor complete con numeros del 1 al 10</p>
+			</form>		
+			</section>	
 			<section id="opinones">
 			<p id="nombreEmpresa">Opiniones:</p>
 			<?php

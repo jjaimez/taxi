@@ -1,5 +1,9 @@
 <!--
-function esEntero(numero): boolean{  
+function inicializar(){
+	 document.getElementById("formularioOpinion").style.display="none";
+}
+
+function esEntero(numero){  
  	if (isNaN(numero)){
         return false;
     } 
@@ -17,6 +21,10 @@ function esEntero(numero): boolean{
     }
 }
 
+function opinar(){
+	document.getElementById("formularioOpinion").style.display="block";
+}
+
 function validarDatos(){
 	var nombreOpinion = document.getElementById("nombreOpinion").value;
 	var preferOpinion = document.getElementById("preferOpinion").value;
@@ -28,7 +36,7 @@ function validarDatos(){
 	if ((nombreOpinion != "") && (opinionOpinion =! "") && (preferOpinion != "") && (puntOpinion != "") && (AutosOpinion != "") && (preferOpinion != "")
 		&& (leyOpinion != "")){
 		if ((esEntero(preferOpinion)) && (esEntero(puntOpinion)) && (esEntero(AutosOpinion)) && (esEntero(PrecioOpinion)) && (esEntero(leyOpinion))) {
-			document.getElementById("formulario").submit();
+			document.getElementById("formularioOpinion").submit();
 		} else {
 			alert("Por favor complete con datos correctos");
 		}
