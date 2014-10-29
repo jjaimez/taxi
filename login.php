@@ -57,7 +57,7 @@
 			        } 
 			    }
 			} else {
-				header("location:ingreso.html"); 
+				header("location:ingreso.php"); 
 			}
 
 	?> 	
