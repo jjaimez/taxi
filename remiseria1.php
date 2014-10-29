@@ -1,8 +1,8 @@
 <!Doctype HTML>
 <html lang="es">
 	<head>
-		<link rel="stylesheet" type="text/css" href="css/remiserias.css">
-		 <script type="text/javascript" src="js/formOpinar.js"> </script>
+		<link rel="stylesheet" href="css/remiserias.css">	
+		<script type="text/javascript" src="js/formOpinar.js"> </script>
 	</head>
 	<body onload="inicializar()">
 		<div>	
@@ -66,11 +66,11 @@
 			<p><input type="button" id="btnOpinar" onclick="opinar()" value="Opinar"></p>	
 			</section>
 			<section id="puntajes">
-			<p>Preferencias: <?php echo ($preferencias/$filas);?></p>	
-			<p>Puntualidad: <?php echo ($puntualidad/$filas);?></p>	
-			<p>Autos: <?php echo ($autos/$filas);?></p>	
-			<p>Precio: <?php echo ($precio/$filas);?></p>	
-			<p>Respeto de las leyes de transito: <?php echo ($leyes/$filas);?></p>			
+			<p>Preferencias: <?php echo round($preferencias/$filas,1);?></p>	
+			<p>Puntualidad: <?php echo round($puntualidad/$filas,1);?></p>	
+			<p>Autos: <?php echo round($autos/$filas,1);?></p>	
+			<p>Precio: <?php echo round($precio/$filas,1);?></p>	
+			<p>Respeto de las leyes de transito: <?php echo round($leyes/$filas,1);?></p>			
 			</section>
 			<section id="formSection">
 			<form action="" id="formularioOpinion" method="post">
@@ -80,8 +80,8 @@
         		<p>*Autos:<input type="text" size="1" id="AutosOpinion" name="AutosOpinion"/></p>
         		<p>*Precio:<input type="text" size="1" id="PrecioOpinion" name="PrecioOpinion"/></p>
         		<p>*Respeto de las leyes de transito:<input type="text" size="1" id="leyOpinion" name="leyOpinion"/></p>
-        		<p>Opinion: <textarea id="opinionOpinion" name="opinionOpinion"> </textarea></p><br>
-        		<input type="button" value="Enviar" size="300" onclick="validarDatos()" id="botonBuscar">
+        		<p>Opinion: (Maximo 300 caracteres)<textarea id="opinionOpinion"  rows="5" cols="60" name="opinionOpinion"> </textarea></p>
+        		<input type="button" value="Enviar" onclick="validarDatos()" id="botonBuscar">
         		<p>* Por favor complete con numeros del 1 al 10</p>
 			</form>		
 			</section>	
@@ -91,7 +91,7 @@
 				for ($i = count($opiniones)-1; $i >= 0; $i--) {
 					$aux = $opiniones[$i];
 					$aux2 = $nombres[$i];
-					echo "<p>".$aux2.":</p>";
+					echo "<p class='bordeTop'>".$aux2.":</p>";
 					echo "<p>".$aux."</p>";
 				}	
 			?>

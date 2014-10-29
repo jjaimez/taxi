@@ -4,20 +4,23 @@
 	display: block;
 	background: black;
 	color: #FFE000;
-
 }
 
 section{
 	border: none;
 }
 
+input{
+	margin-top: 1%;
+}
+
 p{
-	padding-top: 1%
+	margin-top: 1%;
 }
 
 #titulo{
 	text-align: center;
-	padding-left: 35%;
+	margin-left: 35%;
 }
 
 #nombreEmpresa{
@@ -25,23 +28,23 @@ p{
 }
 
 #datos{
-	padding-top: 5%;
+	margin-top: 5%;
 	float: left;
 	text-align: left;
 	color: #FFE000;
 }
 
 #puntajes{
-	padding-top: 5%;
-	padding-left: 25%;
+	margin-top: 5%;
+	margin-left: 25%;
 	width: 50%;
 	float: left;
 	text-align: left;
 	color: #FFE000;
 }
 
-#opinones{	
-	padding-top: 3%;
+#opinones{		
+	margin-top: 3%;
 	float: left;
 	text-align: left;
 	color: #FFE000;
@@ -57,14 +60,19 @@ p{
 	border: none;
 }
 
+p.bordeTop{	
+	margin-top: 5%;
+	border-top: solid;
+	border-top-width: thin;
+}
 
 #formSection{
-	padding-left: 25%;
-	width: 50%;
+	margin-left: 25%;
+	width: 100%;
 	text-align: left;
 	float: left;
 }
 
 
 
-img { max-width: 100%};
+img { max-width: 100%;}
