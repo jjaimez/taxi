@@ -72,7 +72,7 @@
 			<p>Precio: <?php echo ($precio/$filas);?></p>	
 			<p>Respeto de las leyes de transito: <?php echo ($leyes/$filas);?></p>			
 			</section>
-			<section class="formSection">
+			<section id="formSection">
 			<form action="" id="formularioOpinion" method="post">
 				<p>Nombre: <input type="text" size="1" id="nombreOpinion" name="nombreOpinion"/></p>				
         		<p>*Preferencias:<input type="text" size="1" id="preferOpinion" name="preferOpinion"/></p>

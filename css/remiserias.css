@@ -7,13 +7,6 @@
 
 }
 
-#formSection{
-	padding-left: 25%;
-	width: 50%;
-	text-align: left;
-	float: left;
-}
-
 section{
 	border: none;
 }
@@ -63,6 +56,15 @@ p{
 	box-shadow: none;
 	border: none;
 }
+
+
+#formSection{
+	padding-left: 25%;
+	width: 50%;
+	text-align: left;
+	float: left;
+}
+
 
 
 img { max-width: 100%};
