@@ -29,6 +29,7 @@ CREATE TABLE `taxi`.`pedido` (
   `direccion_origen` VARCHAR(100) NULL,
   `direccion_destino` VARCHAR(100) NULL DEFAULT 'No especificado',
   `minutos` INT NULL DEFAULT 0,
+  `leida` VARCHAR(3) NULL DEFAULT 'no',
   PRIMARY KEY (`id`));
 
 CREATE TABLE `taxi`.`opiniones` (

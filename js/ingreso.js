@@ -1,13 +1,35 @@
 <!--
 
-function respuesta(id){
-	var resultado = prompt("Minutos que va a tardar el coche en llegar al a casa", valor);
-	document.getElementById("hiddenInput").value = resultado;
-	document.getElementById("hiddenid").value = id;
-	document.getElementById("formRespuesta").submit(); 
-
+function refreshData()
+{
+  // Load the content of "path/to/script.php" into an element with ID "#container".
+  $('#pendiente').prepend($("<div>").load('actualizarEmpresaEjemplo.php'));
 }
 
-document.getElementById("origen").value
+// Execute every 5 seconds
+window.setInterval(refreshData, 5000);
+
+function respuesta(id){
+	var resultado = prompt("Minutos que va a tardar el coche en llegar a la casa");
+	document.getElementById("hiddenInput"+id).value = resultado;
+	document.getElementById("hiddenid"+id).value = id;
+	document.getElementById("formRespuesta"+id).submit(); 
+}
+
+function afuera(id){
+	document.getElementById("hiddenidfuera"+id).value = id; 
+	document.getElementById("formAfuera"+id).submit(); 
+}
+
+function viajando(id){
+	document.getElementById("hiddenidViajando"+id).value = id; 
+	document.getElementById("formViajando"+id).submit(); 
+}
+
+function eliminar(id){
+	document.getElementById("hiddenideliminar"+id).value = id; 
+	document.getElementById("formeliminar"+id).submit(); 
+}
+
 
 --> 

@@ -8,14 +8,7 @@
 		<div>	
 			<?php 
 					session_start();
-					error_reporting(0);			
-					$db_hostname = 'localhost';
-					$db_database = 'taxi';
-					$db_username = 'root';
-					$db_password= '';
-					
-					$con = mysql_connect($db_hostname,$db_username,$db_password); 
-					mysql_select_db($db_database,$con); 
+					include "conexion.php";
 
 					if(isset($_POST['preferOpinion'])) {				
 						$preferOpinion = $_POST['preferOpinion'];
@@ -26,16 +19,11 @@
 						$nombreOpinion = $_POST['nombreOpinion'];
 						$leyOpinion = $_POST['leyOpinion'];						
 						$query = "INSERT INTO opiniones (`preferencias`,`puntualidad`,`autos`,`precio`,`ley`,`opinion`,`nombre`,`empresa`) VALUES ('$preferOpinion','$puntOpinion','$AutosOpinion','$PrecioOpinion','$leyOpinion','$opinionOpinion','$nombreOpinion','empresa ejemplo');";
-						$rec = mysql_query($query);
-						if ($rec){
-							echo "TODO PIOLA";
-						} ELSE {
-							echo mysql_error();
-						}
+						$rec = mysqli_query($con,$query);
 					}
 
 					$query = "SELECT * FROM opiniones where empresa='empresa ejemplo';";
-					$result = mysql_query($query);
+					$result = mysqli_query($con,$query);
 					$preferencias = 0;
 					$puntualidad = 0;
 					$autos = 0;
@@ -43,16 +31,16 @@
 					$precio = 0;
 					$opiniones = array();
 					$nombres = array();
-					$filas = mysql_num_rows($result);
+					$filas = mysqli_num_rows($result);
 					$i = 0;
-					while($row = mysql_fetch_array($result)){
-						$preferencias = $preferencias + $row['preferencias'];
-						$puntualidad = $puntualidad + $row['puntualidad'];
-						$autos = $autos + $row['autos'];
-						$leyes = $leyes + $row['ley'];
-						$precio = $precio + $row['precio'];
-						$opiniones[$i] = $row['opinion'];
-						$nombres[$i] = $row['nombre'];
+					while($row = mysqli_fetch_array($result)){
+						$preferencias = $preferencias + $row->preferencias;
+						$puntualidad = $puntualidad + $row->puntualidad;
+						$autos = $autos + $row->autos;
+						$leyes = $leyes + $row->ley;
+						$precio = $precio + $row->precio;
+						$opiniones[$i] = $row->opinion;
+						$nombres[$i] = $row->nombre;
 						$i = $i+1;
 					}
 			?>

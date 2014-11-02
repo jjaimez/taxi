@@ -13,6 +13,15 @@ var lng_origen;
 var lat_destino = null;
 var lng_destino = null;
 
+
+function refreshData(ids) { 
+  $('#agrupar').prepend($('<div>').load('auxindes.php?id='+ids));
+}
+
+function empezarIntervalo(ids){
+  window.setInterval(refreshData(ids), 5000);
+}
+
 var mapOptions = {
           center: new google.maps.LatLng(-33.1265506, -64.3414028),
           zoom: 13,
@@ -36,6 +45,7 @@ function validarDatos(){
     }
   }
 }
+
 
 function initialize() { //Inicializa el mapa en Rio Cuarto
         geocoder = new google.maps.Geocoder();        
@@ -125,12 +135,9 @@ function codeLatLng(marcador,destino) {
     document.getElementById(destino).value='No resolved address';
   }
       });
-}
-    
-
+}    
 
 
 google.maps.event.addDomListener(window, 'load', initialize);
 
 --> 
-

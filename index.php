@@ -1,15 +1,19 @@
 <!Doctype HTML>
 <html lang="es">
-	<head>
-		<?php
-			//session_start();
-			$db_hostname = 'localhost';
-			$db_database = 'taxi';
-			$db_username = 'root';
-			$db_password= '';
-
-			$con = mysql_connect($db_hostname,$db_username,$db_password); 
-			mysql_select_db($db_database,$con);
+	<head>		
+		<title>R&iacute;o Cuarto Taxi</title>
+		<link rel="shortcut icon" href="imagenes/icon.ico" type="image/x-icon"/> 
+		<meta charset="UTF-8">
+		<meta name=​"viewport" content=​"width=device-width, initial-scale=2.0">
+		<meta name="description" content="R&iacute;o Cuarto Taxi se trata de una aplicaci&oacute;n sencilla y f&aacute;cil de para solicitar taxis o remises en la ciudad de R&iacute;o Cuarto, C&oacute;rdoba, Argentina.">
+		<meta name="keywords" contenct="HTML5, CSS3, Javascript, PHP">
+		<link rel="stylesheet" href="css/home.css">	
+		<script type="text/javascript"
+		src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCWcDSkf5DDRXiMp-jD-BcFdFEDRHycSeY&sensor=false&region=AR&language=es"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+   		<script type="text/javascript" src="js/home.js"> </script>
+    <?php
+	include "conexion.php";
 			if(isset($_POST['origen'])) {				
 				$origen = $_POST['origen'];
 				$empresa = $_POST['empresa'];
@@ -46,26 +50,9 @@
 					$query = $query . ",'$aux'";
 				}
 				$query = $query . ");";
-				echo $query;
-				$rec = mysql_query($query);
-				if ($rec){
-					echo "TODO PIOLA";
-				} ELSE {
-					echo mysql_error();
-				}
-			 }
-		?>
-		<title>R&iacute;o Cuarto Taxi</title>
-		<link rel="shortcut icon" href="imagenes/icon.ico" type="image/x-icon"/> 
-		<meta charset="UTF-8">
-		<meta name=​"viewport" content=​"width=device-width, initial-scale=2.0">
-		<meta name="description" content="R&iacute;o Cuarto Taxi se trata de una aplicaci&oacute;n sencilla y f&aacute;cil de para solicitar taxis o remises en la ciudad de R&iacute;o Cuarto, C&oacute;rdoba, Argentina.">
-		<meta name="keywords" contenct="HTML5, CSS3, Javascript, PHP">
-		<link rel="stylesheet" href="css/home.css">	
-		<script type="text/javascript"
-		src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCWcDSkf5DDRXiMp-jD-BcFdFEDRHycSeY&sensor=false&region=AR&language=es"></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
-    <script type="text/javascript" src="js/home.js"> </script>
+				$rec = mysqli_query($con,$query);							
+			 } 
+?>
 	</head>
 	<body onload="initialize()">		
 		<div id="agrupar">
@@ -87,7 +74,7 @@
         		<input type="button" value="Buscar Direccion" onclick="codeAddress()" id="botonBuscar"><br><br>
         		<p>Empresa: 
         		   		<select name="empresa" id="empresa">
-        		   		<option selected="selected" value="azar">Al azar</option>
+        		   		<option selected="selected" value="empresa ejemplo">Al azar</option>
 						<option value="empresa1">Empresa 1</option>
 						<option value="empresa2">Empresa 2</option>
 						<option value="empresa3">Empresa 3</option>
@@ -111,6 +98,12 @@
 			<br>	
 		</section>	
 		</div>
-		<div id="map_canvas" name="map_canvas"></div>
+		<div id="map_canvas" name="map_canvas"></div>		
+		<?php 
+		if(isset($_POST['origen'])) {
+			echo "<script>alert('Muchas gracias por utilizar este servicio, en brebedad responderemos su pedido');</script>";
+			echo "<script> empezarIntervalo(".mysqli_insert_id($con).");</script>";
+		}
+		?>
 	</body>
 </html>
