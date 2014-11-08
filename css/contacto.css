@@ -3,8 +3,8 @@
     padding: 0%;
 }
 
-html { height: 100% }
-body { height: 100%; margin: 0; padding: 0 }
+html { height: 100%;max-width:100% }
+body { height: 100%; margin: 0; padding: 0 ;max-width:100%; background: #000000}
 
 header, section, footer, aside, nav, article, figure, hgroup{
     display: block;
@@ -28,28 +28,27 @@ a:hover {text-decoration:underline;}
 
 #agrupar{
     width: 95%; /*Ancho del contenedor*/
-    margin: 0.5% auto; /*auto = margen superior e inferior*/
     text-align: left;
 }
 
 #menu{
-    background: #CCCCCC;
+    background: #FFE000;
     padding: 0.5% 2.5%;
-    background: -webkit-linear-gradient(30deg,#8fca90,#058907); /*Parametros: Lugar de inicio, color inicial, color final*/
-    background: -moz-linear-gradient(30deg,#8fca90,#058907);
-
+    width: 100%;
+    border: solid;
+    border-color: #000000;
 }
 
 #menu li:first-child{
-
     width: 12%;
     text-align: center;
 }
 
-#menu li:nth-child(6){
+#menu li:nth-child(5){
     text-decoration:underline;
-    color:#058907;
+    color:#E87C0C;
 }
+
 
 #menu li{   
     display: inline-block;
@@ -60,8 +59,6 @@ a:hover {text-decoration:underline;}
 }
 
 img { max-width: 100%};
-
-
 
 
 #form-contacto { box-sizing: border-box; 
@@ -100,11 +97,11 @@ select.selmenu { font-size: 17px; color: #676767; padding: 9px !important; borde
 }
 #buttons #resetbtn { display: block; float: left; color: #515151; text-shadow: -1px 1px 0px #fff; margin-right: 20px; height: 2em; padding: 0 1em; outline: 0; font-weight: bold; font-size: 1em; white-space: nowrap; word-wrap: normal; vertical-align: middle; cursor: pointer; border-radius: 2px; background-color: #fff;
 }
-#buttons #resetbtn:hover { text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75); color: #818181; background-color: #fff; 
+#buttons #resetbtn:hover { text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75); color: #fff; background-color: #fff; 
 }
-#buttons #submitbtn { display: block; float: left; height: 2em; padding: 0 1em; border: 1px solid; outline: 0; font-weight: bold; font-size: 1em; color:  #fff; text-shadow: 0px 1px 0px #222; white-space: nowrap; word-wrap: normal; vertical-align: middle; cursor: pointer; border-radius: 2px; border-radius: 2px; border-color: #5e890a #5e890a #000; box-shadow: inset 0 1px 0 rgba(256,256,256, .35); background-color: rgb(44,214,31);
+#buttons #submitbtn { display: block; float: left; height: 2em; padding: 0 1em; border: 1px solid; outline: 0; font-weight: bold; font-size: 1em; color:  #000000; text-shadow: 0px 1px 0px #222; white-space: nowrap; word-wrap: normal; vertical-align: middle; cursor: pointer; border-radius: 2px; border-radius: 2px; border-color: yellow yellow #000; box-shadow: inset 0 1px 0 rgba(256,256,256, .35); background-color: yellow;
 }
-#buttons #submitbtn:hover, #buttons #submitbtn:active { border-color: #7c9826 #7c9826 #000; color: #000; box-shadow: inset 0 1px 0 rgba(256,256,256,0.4),0 1px 3px rgba(0,0,0,0.5); background: rgb(228,237,189);
+#buttons #submitbtn:hover, #buttons #submitbtn:active { border-color: white white #fff; color: #000000; box-shadow: inset 0 1px 0 rgba(256,256,256,0.4),0 1px 3px rgba(0,0,0,0.5); background: rgb(228,237,189);
 }
 .clearfix:after { content: "."; display: block; clear: both; visibility: hidden; line-height: 0; height: 0; }
 html[xmlns] .clearfix { display: block; }

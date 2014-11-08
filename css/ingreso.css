@@ -39,3 +39,9 @@ li{
 	border-bottom-color: #E87C0C;
 }
 
+ul{
+	list-style-type: none;
+	list-style: none;
+    padding: 0px;
+    margin: 0px;
+}

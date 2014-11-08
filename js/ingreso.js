@@ -1,14 +1,5 @@
 <!--
 
-function refreshData()
-{
-  // Load the content of "path/to/script.php" into an element with ID "#container".
-  $('#pendiente').prepend($("<div>").load('actualizarEmpresaEjemplo.php'));
-}
-
-// Execute every 5 seconds
-window.setInterval(refreshData, 5000);
-
 function respuesta(id){
 	var resultado = prompt("Minutos que va a tardar el coche en llegar a la casa");
 	document.getElementById("hiddenInput"+id).value = resultado;

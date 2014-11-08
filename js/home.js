@@ -15,11 +15,7 @@ var lng_destino = null;
 
 
 function refreshData(ids) { 
-  $('#agrupar').prepend($('<div>').load('auxindes.php?id='+ids));
-}
-
-function empezarIntervalo(ids){
-  window.setInterval(refreshData(ids), 5000);
+    $('#agrupar').prepend($('<div>').load('auxindes.php?id='+ids));
 }
 
 var mapOptions = {

@@ -1,20 +1,23 @@
-<!Doctype HTML>
-<html lang="es">
+<?php
+echo "<!Doctype HTML>
+	<html lang='es'>
 	<head>		
 		<title>R&iacute;o Cuarto Taxi</title>
-		<link rel="shortcut icon" href="imagenes/icon.ico" type="image/x-icon"/> 
-		<meta charset="UTF-8">
-		<meta name=​"viewport" content=​"width=device-width, initial-scale=2.0">
-		<meta name="description" content="R&iacute;o Cuarto Taxi se trata de una aplicaci&oacute;n sencilla y f&aacute;cil de para solicitar taxis o remises en la ciudad de R&iacute;o Cuarto, C&oacute;rdoba, Argentina.">
-		<meta name="keywords" contenct="HTML5, CSS3, Javascript, PHP">
-		<link rel="stylesheet" href="css/home.css">	
-		<script type="text/javascript"
-		src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCWcDSkf5DDRXiMp-jD-BcFdFEDRHycSeY&sensor=false&region=AR&language=es"></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
-   		<script type="text/javascript" src="js/home.js"> </script>
-    <?php
+		<link rel='shortcut icon' href='imagenes/icon.ico' type='image/x-icon'/> 
+		<meta charset='UTF-8'>
+		<meta name=​'viewport' content=​'width=device-width, initial-scale=2.0'>
+		<meta name='description' content='R&iacute;o Cuarto Taxi se trata de una aplicaci&oacute;n sencilla y f&aacute;cil de para solicitar taxis o remises en la ciudad de R&iacute;o Cuarto, C&oacute;rdoba, Argentina.'>
+		<meta name='keywords' contenct='HTML5, CSS3, Javascript, PHP'>
+		<link rel='stylesheet' href='css/home.css'>	
+		<script type='text/javascript' src='http://maps.googleapis.com/maps/api/js?key=AIzaSyCWcDSkf5DDRXiMp-jD-BcFdFEDRHycSeY&sensor=false&region=AR&language=es'></script>
+		<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js'></script>
+		<script type='text/javascript' src='js/home.js'></script>";
+
 	include "conexion.php";
-			if(isset($_POST['origen'])) {				
+	//echo "<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js'></script>";
+	//echo "<script type='text/javascript' src='js/home.js'> </script>";
+			if(isset($_POST['origen'])) {
+				mysqli_begin_transaction($con);
 				$origen = $_POST['origen'];
 				$empresa = $_POST['empresa'];
 				$lat_origen = $_POST['lat_origen'];
@@ -50,60 +53,60 @@
 					$query = $query . ",'$aux'";
 				}
 				$query = $query . ");";
-				$rec = mysqli_query($con,$query);							
+				$rec = mysqli_query($con,$query);
+				mysqli_commit($con);
+				echo "<script>alert('Muchas gracias por utilizar este servicio, en brebedad responderemos su pedido');</script>";															
 			 } 
-?>
-	</head>
-	<body onload="initialize()">		
-		<div id="agrupar">
-		<nav id="menu">
+
+echo "</head>
+	<body onload='initialize()'>		
+		<div id='agrupar'>
+		<nav id='menu'>
 			<ul>
-				<li><figure><img src="imagenes/logo64.png"></figure></li>
+				<li><figure><img src='imagenes/logo64.png'></figure></li>
 				<li>Inicio</li>
-				<li><a href="empresas.html">Empresas</a></li>
-				<li><a href="acercaDe.html">Acerca de</a></li>
-				<li><a href="contacto.html">Contacto</a></li>
+				<li><a href='empresas.html'>Empresas</a></li>
+				<li><a href='acercaDe.html'>Acerca de</a></li>
+				<li><a href='contacto.html'>Contacto</a></li>
 			</ul>
 		</nav>
-		<section id="columna">
-			<form action="" id="formulario" method="post">				
+		<section id='columna'>
+			<form action='' id='formulario' method='post'>				
         		<p>Direcci&oacute;n de origen</p>
-        		<input type="text" id="origen" name="origen"/> <br><br>
+        		<input type='text' id='origen' name='origen'/> <br><br>
         		<p>Direcci&oacute;n de destino (Opcional)</p>
-        		<input type="text" id="destino" name="destino"/><br><br>
-        		<input type="button" value="Buscar Direccion" onclick="codeAddress()" id="botonBuscar"><br><br>
+        		<input type='text' id='destino' name='destino'/><br><br>
+        		<input type='button' value='Buscar Direccion' onclick='codeAddress()' id='botonBuscar'><br><br>
         		<p>Empresa: 
-        		   		<select name="empresa" id="empresa">
-        		   		<option selected="selected" value="empresa ejemplo">Al azar</option>
-						<option value="empresa1">Empresa 1</option>
-						<option value="empresa2">Empresa 2</option>
-						<option value="empresa3">Empresa 3</option>
+        		   		<select name='empresa' id='empresa'>
+        		   		<option selected='selected' value='jacinto'>Al azar</option>
+						<option value='empresa1'>Empresa 1</option>
+						<option value='empresa2'>Empresa 2</option>
+						<option value='empresa3'>Empresa 3</option>
 						</select >
 				</p> <br>
         		<p>Numero de pasajeros
-        		<input type="text" size="2" id="pasajeros" name="nropasajeros"/></p><br>
+        		<input type='text' size='2' id='pasajeros' name='nropasajeros'/></p><br>
         		<p>Preferencias (Opcional)</p><br>
-        		<p>Fumador&nbsp; &nbsp;<input type="checkbox" name="fumador" value="fumador"></p><br>
-				<p>Conversador&nbsp; &nbsp;<input type="checkbox" name="conversador" value="conversador"></p><br>
-				<input type="hidden" id="lat_origen" name="lat_origen" value="">
-				<input type="hidden" id="lng_origen" name="lng_origen" value="">
-				<input type="hidden" id="lat_destino" name="lat_destino" value="">
-				<input type="hidden" id="lng_destino" name="lng_destino" value="">
-        		<input type="button" value="Pedir" onclick="validarDatos()" id="botonBuscar"><br><br>
+        		<p>Fumador&nbsp; &nbsp;<input type='checkbox' name='fumador' value='fumador'></p><br>
+				<p>Conversador&nbsp; &nbsp;<input type='checkbox' name='conversador' value='conversador'></p><br>
+				<input type='hidden' id='lat_origen' name='lat_origen' value=''>
+				<input type='hidden' id='lng_origen' name='lng_origen' value=''>
+				<input type='hidden' id='lat_destino' name='lat_destino' value=''>
+				<input type='hidden' id='lng_destino' name='lng_destino' value=''>
+        		<input type='button' value='Pedir' onclick='validarDatos()' id='botonBuscar'><br><br>
         	</form>
         	<p>
-        		<a href="https://www.facebook.com/TecProSoftware"><img src="imagenes/facebook.png"></a> &nbsp; &nbsp;       
-				<a href="https://play.google.com/store/apps/details?id=org.tecpro.colectivos&hl=es_419"><img src="imagenes/googlePlay.png"></a>
+        		<a href='https://www.facebook.com/TecProSoftware'><img src='imagenes/facebook.png'></a> &nbsp; &nbsp;       
+				<a href='https://play.google.com/store/apps/details?id=org.tecpro.colectivos&hl=es_419'><img src='imagenes/googlePlay.png'></a>
 			</p>			
 			<br>	
 		</section>	
 		</div>
-		<div id="map_canvas" name="map_canvas"></div>		
-		<?php 
+		<div id='map_canvas' name='map_canvas'></div>";
 		if(isset($_POST['origen'])) {
-			echo "<script>alert('Muchas gracias por utilizar este servicio, en brebedad responderemos su pedido');</script>";
-			echo "<script> empezarIntervalo(".mysqli_insert_id($con).");</script>";
+			echo " <script> window.setInterval('refreshData(".mysqli_insert_id($con).")', 5000);</script>";
 		}
-		?>
-	</body>
-</html>
+	echo "</body>
+</html>";
+?>

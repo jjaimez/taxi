@@ -12,8 +12,10 @@
 			session_start();			
 			include "conexion.php"; 
 
-			function verificar_login($usuario,$contrasenha,&$result) { 
-			    $sql = "SELECT * FROM usuarios WHERE usuario = '$usuario' and password = '$contrasenha'"; 
+			if (!isset($_SESSION['usuario'])){
+				 if(isset($_POST['usuario']))  { 
+			    $sql = "SELECT * FROM usuarios WHERE usuario = '".$_POST['usuario']."' and password = '".$_POST['contrasenha']."'"; 
+			    echo $sql;
 			   $rec = mysqli_query($con,$sql); 
 			    $count = 0; 
 			     while($row = mysqli_fetch_object($rec)) 
@@ -24,33 +26,18 @@
 			  
 			    if($count == 1) 
 			    { 
-			        return 1; 
+			    	 $_SESSION['usuario'] = $_POST['usuario'];
+			         header("location:ingreso".$_POST['usuario'].".php"); 
 			    } 
 			  
 			    else 
 			    { 
-			        return 0; 
+			        echo '<div class="error">Su usuario es incorrecto, intente nuevamente.</div>'; 
 			    } 
-			} 
-			  
-			if(!isset($_SESSION['userid'])) 
-			{ 
-			    if(isset($_POST['login'])) 
-			    { 
-			        if(verificar_login($_POST['usuario'],$_POST['contrasenha'],$result) == 1) 
-			        { 
-			            $_SESSION['userid'] = $result->idusuario; 
-			            header("location:ingreso.html"); 
-			        } 
-			        else 
-			        { 
-			            echo '<div class="error">Su usuario es incorrecto, intente nuevamente.</div>'; 
-			        } 
-			    }
+				} 
 			} else {
-				header("location:ingreso.php"); 
+				header("location:ingreso".$_SESSION['usuario'].".php"); 
 			}
-
 	?> 	
 	</head>	
 	<body>
@@ -60,8 +47,7 @@
         		<p>Usuario</p>
         		<input type="text" id="usuario" name="usuario"/> <br><br>
         		<p>Contraseña</p>
-        		<input type="text" id="contrasenha" name="contrasenha"/><br><br>
-        		<p>Recordar&nbsp; &nbsp;<input type="checkbox" name="recordar" value="recordar"></p><br>
+        		<input type="password" id="contrasenha" name="contrasenha"/><br><br>	
         		<input type="submit" value="Ingresar"  id="botonBuscar" name="login"><br><br>        		
         	</form>        	
         </div>	

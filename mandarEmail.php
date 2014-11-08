@@ -1,24 +1,24 @@
 <!Doctype HTML>
 <html lang="es">
 	<head>
-		<title>R&iacute;o Cuarto Taxi</title>
-		<link rel="shortcut icon" href="imagenes/icon.ico" type="image/x-icon"/> 
-		<meta charset="UTF-8">
-		<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
-		<meta name="description" content="R&iacute;o Cuarto Taxi se trata de una aplicaci&oacute;n sencilla y f&aacute;cil de para solicitar taxis o remises en la ciudad de R&iacute;o Cuarto, C&oacute;rdoba, Argentina.">
-		<meta name="keywords" contenct="HTML5, CSS3, Javascript, PHP">
+		 <title>R&iacute;o Cuarto Taxi</title>
+        <link rel="shortcut icon" href="imagenes/icon.ico" type="image/x-icon"/> 
+        <meta charset="UTF-8">
+        <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+        <meta name="description" content="R&iacute;o Cuarto Taxi se trata de una aplicaci&oacute;n sencilla y f&aacute;cil de para solicitar taxis o remises en la ciudad de R&iacute;o Cuarto, C&oacute;rdoba, Argentina.">
+        <meta name="keywords" contenct="HTML5, CSS3, Javascript, PHP">
 		<link rel="stylesheet" href="css/enviarEmail.css">	
 	</head>	
 	<body>
 		<div id="agrupar">
 		<nav id="menu">
 			<ul>
-				<li><figure><img src="imagenes/logo64.png"></figure></li>
-				<li><a href="index.html">Inicio</a></li>
-				<li><a href="empresas.html">Empresas</a></li>
-				<li><a href="acercaDe.html">Acerca de</a></li>
-				<li><a href="contacto.html">Contacto</a></li>
-			</ul>
+                <li><figure><img src="imagenes/logo64.png"></figure></li>
+                <li><a href="index.php">Inicio</a></li>
+                <li><a href="empresas.html">Empresas</a></li>
+                <li><a href="acercaDe.html">Acerca de</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
 		</nav>
 		<section id="texto">
 <?php

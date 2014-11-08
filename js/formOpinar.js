@@ -36,7 +36,11 @@ function validarDatos(){
 	if ((nombreOpinion != "") && (opinionOpinion =! "") && (preferOpinion != "") && (puntOpinion != "") && (AutosOpinion != "") && (preferOpinion != "")
 		&& (leyOpinion != "")){
 		if ((esEntero(preferOpinion)) && (esEntero(puntOpinion)) && (esEntero(AutosOpinion)) && (esEntero(PrecioOpinion)) && (esEntero(leyOpinion))) {
-			document.getElementById("formularioOpinion").submit();
+			//if ($("#formSection").val().length <= 300){
+				document.getElementById("formularioOpinion").submit();
+			//} else {
+			//	alert("Su opinion posee mas de 300 caracteres, por favor reduzca su opinion");
+			//}
 		} else {
 			alert("Por favor complete con datos correctos");
 		}

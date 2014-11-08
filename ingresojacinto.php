@@ -1,9 +1,4 @@
 <!Doctype HTML>
-<?php
-	if (!isset($_SESSION['usuario'])){
-		header("location:login.php"); 
-	}
-?>
 <html lang='es'>
 	<head>
 		<title>R&iacute;o Cuarto Taxi</title>
@@ -17,7 +12,7 @@
 		<script type='text/javascript' src='js/ingreso.js'></script>
 		<script type='text/javascript' language='javascript' src='lytebox.js'></script>
 		<link rel='stylesheet' href='lytebox.css' type='text/css' media='screen'/>
-		<script type="text/javascript">function refreshData() {  $('#pendiente').prepend($('<div>').load('actualizarEmpresaEjemplo.php?empresa=empresa%20ejemplo'));};
+		<script type="text/javascript">function refreshData() {  $('#pendiente').prepend($('<div>').load('actualizarEmpresaEjemplo.php?empresa=jacinto'));};
 
 			window.onload = window.setInterval('refreshData()', 5000);
 			</script>	  
@@ -26,33 +21,52 @@
 		<div id='pendiente'>
 		<?php
 		session_start();			
-			include "conexion.php";			
+			include "conexion.php";		
+
+
+			if (!isset($_SESSION['usuario'])){
+				header("location:login.php"); 
+			} else {
+				if (!($_SESSION['usuario'] = 'jacinto')){
+					header("location:ingreso".$_SESSION['usuario'].".php"); 
+				}
+			}
+
+
 			if(isset($_POST['hiddenInput'])){
+				mysqli_begin_transaction($con);
 				$hiddenid = $_POST['hiddenid'];
 				$hiddenInput = $_POST['hiddenInput'];
 				$query = "UPDATE pedido SET estado='en camino', minutos =".$hiddenInput." WHERE id=".$hiddenid.";";
-				$rec = mysqli_query($con,$query);				
+				$rec = mysqli_query($con,$query);
+				mysqli_commit($con);				
 			}
 
 			if(isset($_POST['hiddenidfuera'])){
+				mysqli_begin_transaction($con);
 				$hiddenidfuera = $_POST['hiddenidfuera'];
 				$query = "UPDATE pedido SET estado='afuera' WHERE id=".$hiddenidfuera.";";
 				$rec = mysqli_query($con,$query);
+				mysqli_commit($con);
 			}
 
 			if(isset($_POST['hiddenidViajando'])){
+				mysqli_begin_transaction($con);
 				$hiddenidViajando = $_POST['hiddenidViajando'];
 				$query = "UPDATE pedido SET estado='terminado' WHERE id=".$hiddenidViajando.";";
 				$rec = mysqli_query($con,$query);
+				mysqli_commit($con);
 			}
 
 			if(isset($_POST['hiddenideliminar'])){
+				mysqli_begin_transaction($con);
 				$hiddenideliminar = $_POST['hiddenideliminar'];
 				$query = "DELETE FROM pedido WHERE id=".$hiddenideliminar.";";
 				$rec = mysqli_query($con,$query);
+				mysqli_commit($con);
 			}					
 			echo "<ul>";
-					$query = "SELECT * FROM pedido where empresa='empresa ejemplo' and estado = 'pendiente' order by id desc;";
+					$query = "SELECT * FROM pedido where empresa='jacinto' and estado = 'pendiente' order by id desc;";
 					$rec = mysqli_query($con,$query);
 					while($row = mysqli_fetch_object($rec)) // $row = $rec->fetch_object()
 					{ 
@@ -75,14 +89,16 @@
 						echo "<form action='' method='post' id='formRespuesta".$row->id."'> <input type='hidden' values='' id='hiddenInput".$row->id."' name='hiddenInput'><input type='hidden' values='' id='hiddenid".$row->id."' name='hiddenid'></form>";
 						echo "<p><a href='mostrarDireccion.php?latO=".$row->lat_origen."&lngO=".$row->lng_origen."&latD=".$row->lat_destino."&lngD=".$row->lng_destino."' class='lytebox' data-title='Direcciones' data-lyte-options='width:1016 height:816 scrollbars:no'></a><input type='button' value='Ver mapa'></a>&nbsp;&nbsp;<input type='button' onclick='respuesta(".$row->id.");'value='Responder'></p>";
 						echo "</li>";
+						mysqli_begin_transaction($con);
 						$query2 = "UPDATE pedido SET leida='si' WHERE id=".$row->id.";";
 						$rec2 = mysqli_query($con,$query2);	
+						mysqli_commit($con);
 					}	 				
 	echo "</ul>
         </div>
         <div id='camino'>	  
         	<ul>";        		
-					$query = "SELECT * FROM pedido where empresa='empresa ejemplo' and estado = 'en camino' order by id desc;";
+					$query = "SELECT * FROM pedido where empresa='jacinto' and estado = 'en camino' order by id desc;";
 					$rec = mysqli_query($con,$query);		
 					while($row = mysqli_fetch_object($rec)) // $row = $rec->fetch_object()
 					{ 
@@ -111,7 +127,7 @@
         </div>
         <div id='viaje'>
         <ul>";
-					$query = "SELECT * FROM pedido where empresa='empresa ejemplo' and estado = 'afuera' order by id desc;";
+					$query = "SELECT * FROM pedido where empresa='jacinto' and estado = 'afuera' order by id desc;";
 					$rec = mysqli_query($con,$query);		
 					while($row = mysqli_fetch_object($rec)) // $row = $rec->fetch_object()
 					{ 
@@ -139,7 +155,7 @@
     	</div>
         <div id='finalizado'>
         <ul>";	
-					$query = "SELECT * FROM pedido where empresa='empresa ejemplo' and estado = 'terminado' order by id desc;";
+					$query = "SELECT * FROM pedido where empresa='jacinto' and estado = 'terminado' order by id desc;";
 					$rec = mysqli_query($con,$query);		
 					while($row = mysqli_fetch_object($rec)) // $row = $rec->fetch_object()
 					{ 
@@ -165,6 +181,7 @@
 					}		
  echo "</ul>  
   	</div>	
-	</body>
+	</body>	
 </html>";
+mysqli_close($con);
 ?>

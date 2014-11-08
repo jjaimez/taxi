@@ -43,6 +43,12 @@ p{
 	color: #FFE000;
 }
 
+.noMargin{
+	margin: 0%;
+	padding: 0%;
+	display: inline;
+}
+
 #opinones{		
 	margin-top: 3%;
 	float: left;
@@ -72,7 +78,5 @@ p.bordeTop{
 	text-align: left;
 	float: left;
 }
-
-
 
 img { max-width: 100%;}

@@ -17,11 +17,11 @@ VALUES
 
 CREATE TABLE `taxi`.`pedido` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `lat_origen` FLOAT(10,6) NULL,
-  `lng_origen` FLOAT(10,6) NULL,
+  `lat_origen` FLOAT(10,6) DEFAULT 0,
+  `lng_origen` FLOAT(10,6) DEFAULT 0,
   `pasajeros` INT NULL,
-  `lat_destino` FLOAT(10,6) NULL,
-  `lng_destino` FLOAT(10,6) NULL,
+  `lat_destino` FLOAT(10,6) DEFAULT 0,
+  `lng_destino` FLOAT(10,6) DEFAULT 0,
   `empresa` VARCHAR(45) NULL,
   `fumador` INT NULL,
   `conversador` INT NULL,
@@ -30,6 +30,7 @@ CREATE TABLE `taxi`.`pedido` (
   `direccion_destino` VARCHAR(100) NULL DEFAULT 'No especificado',
   `minutos` INT NULL DEFAULT 0,
   `leida` VARCHAR(3) NULL DEFAULT 'no',
+  `anunciado` VARCHAR(3) NULL DEFAULT 'no',
   PRIMARY KEY (`id`));
 
 CREATE TABLE `taxi`.`opiniones` (
@@ -44,3 +45,9 @@ CREATE TABLE `taxi`.`opiniones` (
   `empresa` VARCHAR(45) NULL,
   PRIMARY KEY (`id`));
 
+CREATE TABLE `taxi`.`empresa` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `nombre` VARCHAR(45) NULL,
+  `telefono` VARCHAR(45) NULL,
+  `direccion` VARCHAR(80) NULL,
+  PRIMARY KEY (`id`));
