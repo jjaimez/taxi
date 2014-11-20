@@ -6,6 +6,7 @@
 html { height: 100%;max-width:100% }
 body { height: 100%; margin: 0; padding: 0 ;max-width:100%; background: #000000; max-height: 100%;}
 
+
 header, section, footer, aside, nav, article, figure, hgroup{
 	display: block;
 }
@@ -34,7 +35,7 @@ a:hover {text-decoration:underline;}
 	
 #menu{
 	background: #FFE000;
-	padding: 0.5% 2.5%;
+	padding: 0.5% 2.5%;	
 	width: 100%;
 	border: solid;
 	border-color: #000000;
@@ -60,9 +61,9 @@ a:hover {text-decoration:underline;}
 }
 
 #columna{
-	max-height: 80%;
 	max-width: 15%;
-	width: 15%;
+	max-height: 100%;
+	width: 100%;
 	margin: 2% 0%;
 	float: left;
 	padding: 2%;
@@ -92,8 +93,10 @@ a:hover {text-decoration:underline;}
   box-shadow: none;
   border-style: none;
   height: auto; 
-  width: 80%;
-  max-width: 80%;
+   height: 100%; 
+	  width: 100%;
+	  max-height: 100%;
+	  max-width: 100%; 
   text-align: center;	 
  } 
 
@@ -102,11 +105,59 @@ a:hover {text-decoration:underline;}
   box-shadow: none;
   border-style: outset;
   height: auto; 
-  width: 80%;
-  max-width:80%;
+  height: 100%; 
+  width: 100%;
+  max-height: 100%;
+  max-width: 100%; 
   text-align: center;
   text-transform: capitalize;
 }
 
 img { max-width: 100%;height:auto;}
 
+@media screen and (max-width: 720px) {
+  	
+	* {
+		float: none;		
+    }
+ 
+
+	#agrupar{
+		width: 100%;
+		max-width: 100%;
+		text-align: center;
+	}
+
+    #columna{
+    	border-radius: 0%;
+	    text-align: center;
+		height: 100%; 
+		width: 100%;
+		max-height: 100%;
+		max-width: 100%;
+		margin: 0;
+		padding: 0;
+	}
+
+	#origen,#destino,#empresa,#botonBuscar { 
+		height: 100%; 
+		width: 80%;
+		max-height: 100%;	
+		max-width: 80%; 
+	} 
+
+   #menu{
+   		float: none;
+    	border: none;
+    	border-bottom: solid;
+    	width: 95%;
+    	text-align: left;
+    }
+
+	#map_canvas {	
+		border: none;
+		border-top: solid;
+		height: 80%; 
+		max-height: 80%;
+	}
+}

@@ -8,40 +8,58 @@ div{
 	display: inline-block;
 }
 
+.venticinco{
+	width: 24%;
+	border-left: solid;
+	border-left-color: #ECA153;		
+	float: left;
+	border-bottom: solid;
+	border-bottom-color: #ECA153; 
+}
+
+.venticinco2{
+	width: 24%;			
+	float: left;
+	border-bottom: solid;
+	border-bottom-color: #ECA153; 
+}
+
 #pendiente{
 	width: 24%;
-	height: 100%;
-	border-right: solid;
-	border-right-color: #ffffff;
+	height: 100%;	
+	float: none; 
 }
 
 #camino{	
 	width: 24%;
 	height: 100%;
-	border-right: solid;
-	border-right-color: #ffffff;
-	}
+	border-left: solid;
+	border-left-color: #ECA153; 	
+	float: left; 
+}
 
 #viaje{
 	width: 24%;
 	height: 100%;
-	border-right: solid;
-	border-right-color: #ffffff;
+	border-left: solid;
+	border-left-color: #ECA153;	
+	float: left;  
 }
 
 #finalizado{
 	width: 24%;
 	height: 100%;
+	border-left: solid;
+	border-left-color: #ECA153; 	
+	float: left; 
 }
 
 li{
 	border-bottom: solid;
-	border-bottom-color: #E87C0C;
+	border-bottom-color: #ECA153;
 }
 
 ul{
 	list-style-type: none;
 	list-style: none;
-    padding: 0px;
-    margin: 0px;
 }

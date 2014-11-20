@@ -64,9 +64,22 @@ a:hover {text-decoration:underline;}
 #texto{
 	width: 80%;
 	margin: 10%;
+	margin-top: 5%;
 	float: left;
 	text-align: center;
 	color: #FFE000;
 }
 
 img { max-width: 100%};
+
+
+#texto a:link {text-decoration:none;color:#ECA153;} 
+
+
+#texto a:visited {text-decoration:none;color:#ECA153;} 
+
+
+#texto a:active {text-decoration:none;color:#058907;} 
+
+
+#texto a:hover {text-decoration:underline;} 

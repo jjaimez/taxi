@@ -28,10 +28,15 @@ echo "<!Doctype HTML>
 			        };
 
 			        function placeMarker() {
-						new google.maps.Marker({position: {lat:".$latO.", lng:".$lngO."}, map: map, icon : marcadorDesde});
-						if (".$latD." != 0){
-							new google.maps.Marker({position: {lat:".$latD.", lng:".$lngD."}, map: map, icon : marcadorHasta});
+			        	if (".$latO." != 0){
+							new google.maps.Marker({position: {lat:".$latO.", lng:".$lngO."}, map: map, icon : marcadorDesde});
+							if (".$latD." != 0){
+								new google.maps.Marker({position: {lat:".$latD.", lng:".$lngD."}, map: map, icon : marcadorHasta});
+							}
+						} else {
+							alert('El usuario busco la direccion');
 						}
+						
 					};
 
 			        function initialize() { //Inicializa el mapa en Rio Cuarto

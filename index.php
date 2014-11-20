@@ -5,17 +5,15 @@ echo "<!Doctype HTML>
 		<title>R&iacute;o Cuarto Taxi</title>
 		<link rel='shortcut icon' href='imagenes/icon.ico' type='image/x-icon'/> 
 		<meta charset='UTF-8'>
-		<meta name=​'viewport' content=​'width=device-width, initial-scale=2.0'>
+		<meta name=​'viewport' content=​'width=device-width, initial-scale=1.0'>
 		<meta name='description' content='R&iacute;o Cuarto Taxi se trata de una aplicaci&oacute;n sencilla y f&aacute;cil de para solicitar taxis o remises en la ciudad de R&iacute;o Cuarto, C&oacute;rdoba, Argentina.'>
-		<meta name='keywords' contenct='HTML5, CSS3, Javascript, PHP'>
-		<link rel='stylesheet' href='css/home.css'>	
+		<meta name='keywords' contenct='HTML5, CSS3, Javascript, PHP'>			
+		<link rel='stylesheet' href='css/home.css'>
 		<script type='text/javascript' src='http://maps.googleapis.com/maps/api/js?key=AIzaSyCWcDSkf5DDRXiMp-jD-BcFdFEDRHycSeY&sensor=false&region=AR&language=es'></script>
-		<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js'></script>
+		<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'></script>
 		<script type='text/javascript' src='js/home.js'></script>";
 
 	include "conexion.php";
-	//echo "<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js'></script>";
-	//echo "<script type='text/javascript' src='js/home.js'> </script>";
 			if(isset($_POST['origen'])) {
 				mysqli_begin_transaction($con);
 				$origen = $_POST['origen'];
@@ -54,9 +52,8 @@ echo "<!Doctype HTML>
 				}
 				$query = $query . ");";
 				$rec = mysqli_query($con,$query);
-				mysqli_commit($con);
 				echo "<script>alert('Muchas gracias por utilizar este servicio, en brebedad responderemos su pedido');</script>";															
-			 } 
+			 };
 
 echo "</head>
 	<body onload='initialize()'>		
@@ -68,7 +65,7 @@ echo "</head>
 				<li><a href='empresas.html'>Empresas</a></li>
 				<li><a href='acercaDe.html'>Acerca de</a></li>
 				<li><a href='contacto.html'>Contacto</a></li>
-			</ul>
+			</ul>  
 		</nav>
 		<section id='columna'>
 			<form action='' id='formulario' method='post'>				
@@ -96,16 +93,17 @@ echo "</head>
 				<input type='hidden' id='lng_destino' name='lng_destino' value=''>
         		<input type='button' value='Pedir' onclick='validarDatos()' id='botonBuscar'><br><br>
         	</form>
-        	<p>
-        		<a href='https://www.facebook.com/TecProSoftware'><img src='imagenes/facebook.png'></a> &nbsp; &nbsp;       
-				<a href='https://play.google.com/store/apps/details?id=org.tecpro.colectivos&hl=es_419'><img src='imagenes/googlePlay.png'></a>
+        	<p style='text-align: center'>
+        		<a href='https://www.facebook.com/TecProSoftware'><img src='imagenes/facebook.png'></a>  
 			</p>			
 			<br>	
 		</section>	
 		</div>
-		<div id='map_canvas' name='map_canvas'></div>";
+		<div id='map_canvas' name='map_canvas'></div>
+		<div id='map_canvas2' name='map_canvas2'></div>";
 		if(isset($_POST['origen'])) {
-			echo " <script> window.setInterval('refreshData(".mysqli_insert_id($con).")', 5000);</script>";
+			echo "<script type='text/javascript'>  window.onload =  window.setInterval(function() { $('#map_canvas2').append($('<div>').load('auxindes.php?id='+".mysqli_insert_id($con)."));}, 5000);</script>";
+			mysqli_commit($con);
 		}
 	echo "</body>
 </html>";

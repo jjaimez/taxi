@@ -4,6 +4,7 @@
 	display: block;
 	background: black;
 	color: #FFE000;
+	max-width: 95%
 }
 
 section{
@@ -49,13 +50,6 @@ p{
 	display: inline;
 }
 
-#opinones{		
-	margin-top: 3%;
-	float: left;
-	text-align: left;
-	color: #FFE000;
-}
-
 #btnOpinar{
 	text-decoration: none;    
 	width: 25%;
@@ -67,9 +61,12 @@ p{
 }
 
 p.bordeTop{	
-	margin-top: 5%;
+	margin-top: 1%;
+	padding: 0%;
 	border-top: solid;
 	border-top-width: thin;
+	text-decoration: underline;
+	font-size: 110%;
 }
 
 #formSection{
@@ -80,3 +77,26 @@ p.bordeTop{
 }
 
 img { max-width: 100%;}
+
+#opinones{
+	margin: 0%;
+	padding: 0%;		
+	float: left;
+	text-align: left;
+	color: #FFE000;	
+}
+
+@media screen and (max-width: 720px) { 
+
+	* {
+		float: none;		
+    }
+
+    #puntajes{
+	margin-top: 3%;
+	margin-left: 0%;
+	text-align: left;
+	color: #FFE000;
+}
+
+}

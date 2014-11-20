@@ -6,23 +6,18 @@ var geocoder;
 var marcadorHasta = 'http://www.colectivosriocuarto.com/imagenes/hasta.png';
 var marcadorDesde = 'http://www.colectivosriocuarto.com/imagenes/desdee.png';
 var dibujar;
-var markerDesde;
-var markerHasta;
 var lat_origen;
 var lng_origen;
 var lat_destino = null;
 var lng_destino = null;
+   
 
-
-function refreshData(ids) { 
-    $('#agrupar').prepend($('<div>').load('auxindes.php?id='+ids));
-}
 
 var mapOptions = {
           center: new google.maps.LatLng(-33.1265506, -64.3414028),
           zoom: 13,
           mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
+        }; 
 
 function validarDatos(){
   if (document.getElementById("origen").value == ""){
@@ -49,7 +44,8 @@ function initialize() { //Inicializa el mapa en Rio Cuarto
         mapOptions);
 
 	 var input = (document.getElementById('columna'));
-   map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+   if (window.innerWidth > 720) {
+   map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);};
 
 
   //click listener para poner marcador en mapa     
@@ -58,6 +54,8 @@ function initialize() { //Inicializa el mapa en Rio Cuarto
   });
 }
 
+var markerDesde = new google.maps.Marker({position: {lat: 0, lng: 0}, map: map}); 
+var markerHasta = new google.maps.Marker({position: {lat: 0, lng: 0}, map: map}); 
 
 
 // funcion que pone marcador donde se hace click

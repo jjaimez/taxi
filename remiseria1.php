@@ -65,26 +65,27 @@
 			<p>Respeto de las leyes de transito: <?php echo round($leyes/$filas,1);?></p>			
 			</section>
 			<section id="formSection" name="formSection">
-			<?php echo "<form action='remiseria1.php?empresa=".$nombreEmpresa."' id='formularioOpinion' method='post'><br>";?>
+			<?php echo "
+				<form action='remiseria1.php?empresa=".$nombreEmpresa."' id='formularioOpinion' method='post'><br>";?>
 				<p class="noMargin">Nombre: <input class="noMargin" type="text" id="nombreOpinion" name="nombreOpinion"/></p><br><br>			
         		<p class="noMargin">*Preferencias: <input class="noMargin" type="text" size="1" id="preferOpinion" name="preferOpinion"/></p><br><br>	
         		<p class="noMargin">*Puntualidad: <input class="noMargin" type="text" size="1" id="puntOpinion" name="puntOpinion"/></p><br><br>
         		<p class="noMargin">*Autos: <input class="noMargin" type="text" size="1" id="AutosOpinion" name="AutosOpinion"/></p><br><br>	
         		<p class="noMargin">*Precio: <input class="noMargin" type="text" size="1" id="PrecioOpinion" name="PrecioOpinion"/></p><br>	<br>
         		<p class="noMargin">*Respeto de las leyes de transito: <input class="noMargin" type="text" size="1" id="leyOpinion" name="leyOpinion"/></p><br>
-        		<p>Opinion: (Maximo 300 caracteres)<textarea id="opinionOpinion"  rows="5" cols="60" name="opinionOpinion"  maxlength="300"> </textarea></p>
-        		<input type="button" value="Enviar" onclick="validarDatos()" id="botonBuscar">
-        		<p>* Por favor complete con numeros del 1 al 10</p>
+        		<p>Opinion: (Maximo 300 caracteres)<textarea wrap="hard" id="opinionOpinion"  rows="5" cols="60" name="opinionOpinion"  maxlength="300"> </textarea></p>
+        		<p><input class="noMargin" type="button" value="Cancelar" onclick="inicializar()" id="botonBuscar">  <input class="noMargin" type="button" value="Enviar" onclick="validarDatos()" id="botonBuscar"></p>
+        		<p>* Por favor complete con numeros del 1 al 10</p>        		
 			</form>		
 			</section>	
-			<section id="opinones">
+			<section id="opinones" scrolling="yes">
 			<p id="nombreEmpresa">Opiniones:</p>
 			<?php
 				for ($i = count($opiniones)-1; $i >= 0; $i--) {
 					$aux = $opiniones[$i];
 					$aux2 = $nombres[$i];
 					echo "<p class='bordeTop'>".$aux2.":</p>";
-					echo "<p>".$aux."</p>";
+					echo "<p class='noMargin'>".$aux."</p>";
 				}	
 			?>
 			</section>
