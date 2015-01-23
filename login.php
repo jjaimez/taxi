@@ -1,33 +1,30 @@
-		<?php 
-			session_start();			
-			include "conexion.php"; 
+<?php 
 
-			if (!isset($_SESSION['usuario'])){
-				 if(isset($_POST['usuario']))  { 
-			    $sql = "SELECT * FROM usuarios WHERE usuario = '".$_POST['usuario']."' and password = '".$_POST['contrasenha']."'"; 
-			    $rec = mysqli_query($con,$sql); 
-			    $count = 0; 
-			     while($row = mysqli_fetch_object($rec)) 
-			    { 
-			        $count++; 
-			        $result = $row; 
-			    } 
-			  
-			    if($count == 1) 
-			    { 
-			    	 $_SESSION['usuario'] = $_POST['usuario'];
-			         header("location:ingreso".$_POST['usuario'].".php"); 
-			    } 
-			  
-			    else 
-			    { 
-			        echo '<div class="error">Su usuario es incorrecto, intente nuevamente.</div>'; 
-			    } 
-				} 
-			} else {
-				header("location:ingreso".$_SESSION['usuario'].".php"); 
-			}
-	?> 	
+include "conexion.php";
+
+if(!isset( $_COOKIE['taxiuser'] ) ) {
+	if(isset($_POST['usuario']))  { 
+		$sql = "SELECT * FROM usuarios WHERE usuario = '".$_POST['usuario']."' and password = '".$_POST['contrasenha']."'"; 
+		$rec = mysqli_query($con,$sql); 
+		$count = 0; 
+		while($row = mysqli_fetch_object($rec)) 
+		{ 
+		    $count++;
+		    $result = $row; 
+		} 	  
+		if($count == 1) 
+		{ 
+		  	setcookie("taxiuser", $_POST['usuario'], time() + (10 * 365 * 24 * 60 * 60));
+		    header("location:ingreso.php"); 
+		} else { 
+			echo '<div class="error">Su usuario es incorrecto, intente nuevamente.</div>'; 
+		} 
+	} 
+} else {
+	header("location:ingreso.php"); 
+}	 
+
+?> 	
 <!Doctype HTML>
 <html lang="es">
 	<head>

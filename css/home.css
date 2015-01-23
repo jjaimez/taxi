@@ -159,5 +159,6 @@ img { max-width: 100%;height:auto;}
 		border-top: solid;
 		height: 80%; 
 		max-height: 80%;
+		float: bottom;
 	}
 }

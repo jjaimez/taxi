@@ -30,7 +30,7 @@ if ($afected > 0) {
 						echo "<a href='mostrardireccion.php?latO=".$row->lat_origen."&lngO=".$row->lng_origen."&latD=".$row->lat_destino."&lngD=".$row->lng_destino."' class='lytebox' data-title='Direcciones' data-lyte-options='width:1016 height:816 scrollbars:no'></a><input type='button' value='Ver mapa'></a>&nbsp;&nbsp;<input type='button' onclick='respuesta(".$row->id.");'value='Responder'></p>";
 						echo "</li>";
 						$query2 = "UPDATE pedido SET leida='si' WHERE id=".$row->id.";";
-						$rec2 = mysqli_query($con,$query2);
+						$rec2 = mysqli_query($con,$query2);						
 					}
 					mysqli_commit($con);
 					echo "</ul>";		

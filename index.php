@@ -62,7 +62,6 @@ echo "</head>
 			<ul>
 				<li><figure><img src='imagenes/logo64.png'></figure></li>
 				<li>Inicio</li>
-				<li><a href='empresas.html'>Empresas</a></li>
 				<li><a href='acercaDe.html'>Acerca de</a></li>
 				<li><a href='contacto.html'>Contacto</a></li>
 			</ul>  
@@ -102,7 +101,7 @@ echo "</head>
 		<div id='map_canvas' name='map_canvas'></div>
 		<div id='map_canvas2' name='map_canvas2'></div>";
 		if(isset($_POST['origen'])) {
-			echo "<script type='text/javascript'>  window.onload =  window.setInterval(function() { $('#map_canvas2').append($('<div>').load('auxindes.php?id='+".mysqli_insert_id($con)."));}, 5000);</script>";
+			echo "<script type='text/javascript'>  window.onload =  window.setInterval(function() { $('#map_canvas2').append($('<div>').load('auxindes.php?id=".mysqli_insert_id($con)."'));}, 5000);</script>";
 			mysqli_commit($con);
 		}
 	echo "</body>

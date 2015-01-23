@@ -7,7 +7,7 @@
 	<body onload="inicializar()">
 		<div>	
 			<?php 
-					session_start();
+					
 					include "conexion.php";
 					$nombreEmpresa = $_REQUEST['empresa'];
 					if(isset($_POST['preferOpinion'])) {				
@@ -33,6 +33,7 @@
 					$nombres = array();
 					$filas = mysqli_num_rows($result);
 					$i = 0;
+					if ($filas > 0){
 					while($row = mysqli_fetch_object($result)){
 						$preferencias = $preferencias + $row->preferencias;
 						$puntualidad = $puntualidad + $row->puntualidad;
@@ -42,6 +43,7 @@
 						$opiniones[$i] = $row->opinion;
 						$nombres[$i] = $row->nombre;
 						$i = $i+1;
+					}
 					}						
 			echo "<section id='titulo'>";
 			echo "<img src='imagenes/".$nombreEmpresa.".jpg'>
@@ -55,18 +57,18 @@
 				<p>Direccion: ".$row->direccion."</p>
 				<p><input type='button' id='btnOpinar' onclick='opinar()' value='Opinar'></p>";
 			}
-			?>	
-			</section>
-			<section id="puntajes">
-			<p>Preferencias: <?php echo round($preferencias/$filas,1);?></p>	
-			<p>Puntualidad: <?php echo round($puntualidad/$filas,1);?></p>	
-			<p>Autos: <?php echo round($autos/$filas,1);?></p>	
-			<p>Precio: <?php echo round($precio/$filas,1);?></p>	
-			<p>Respeto de las leyes de transito: <?php echo round($leyes/$filas,1);?></p>			
-			</section>
-			<section id="formSection" name="formSection">
-			<?php echo "
-				<form action='remiseria1.php?empresa=".$nombreEmpresa."' id='formularioOpinion' method='post'><br>";?>
+			if ($filas > 0){
+			echo "</section>
+			<section id='puntajes'>
+			<p>Preferencias: ".round($preferencias/$filas,1)."</p>	
+			<p>Puntualidad: ".round($puntualidad/$filas,1)."</p>	
+			<p>Autos: ".round($autos/$filas,1)."</p>	
+			<p>Precio: ".round($precio/$filas,1)."</p>	
+			<p>Respeto de las leyes de transito: ".round($leyes/$filas,1)."</p>			
+			</section>";	
+			}
+			echo "<section id='formSection' name='formSection'>
+			<form action='remiseria1.php?empresa=".$nombreEmpresa."' id='formularioOpinion' method='post'><br>";?>
 				<p class="noMargin">Nombre: <input class="noMargin" type="text" id="nombreOpinion" name="nombreOpinion"/></p><br><br>			
         		<p class="noMargin">*Preferencias: <input class="noMargin" type="text" size="1" id="preferOpinion" name="preferOpinion"/></p><br><br>	
         		<p class="noMargin">*Puntualidad: <input class="noMargin" type="text" size="1" id="puntOpinion" name="puntOpinion"/></p><br><br>
